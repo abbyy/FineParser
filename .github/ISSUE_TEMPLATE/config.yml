@@ -1,0 +1,14 @@
+blank_issues_enabled: false
+contact_links:
+  - name: 📖 FineParser documentation
+    url: https://docs.abbyy.com/fine-parser/getting-started/introduction
+    about: Quickstart, REST API, CLI, configuration, output formats, and languages. Most questions are answered here.
+  - name: 🎫 ABBYY technical support (Business plan)
+    url: https://support.abbyy.com/hc/en-us
+    about: Business plan customers can open a support ticket in addition to using this repository.
+  - name: 💳 Billing, subscriptions, and account questions
+    url: https://docs.abbyy.com/fine-parser/basics/api-keys-and-plans
+    about: Upgrades, downgrades, invoices, payment methods, and cancellation are handled in the billing portal, not here.
+  - name: 🏢 FineParser Enterprise
+    url: https://www.abbyy.com/company/contact-us/
+    about: Unlimited pages, high throughput, air-gapped deployment, and engine tuning. Tell us about your use case.

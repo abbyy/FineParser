@@ -1,0 +1,123 @@
+name: 🐛 Bug report
+description: Something in FineParser does not work as documented
+labels: ["bug"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for taking the time to file a report.
+
+        **Before you start:** please [search existing issues](https://github.com/abbyy/FineParser/issues?q=is%3Aissue) — several common problems already have answers, particularly every parse failing (license server egress) and missing structure in the output (`-mode fast`).
+
+        ⚠️ **Never include your API key, license GUID, or confidential documents.** Redact them from commands, logs, and screenshots before posting.
+
+  - type: textarea
+    id: summary
+    attributes:
+      label: What happened?
+      description: What did you expect, and what happened instead?
+      placeholder: I posted a PDF to /parse expecting DocLang with tables, but the response contained only plain text.
+    validations:
+      required: true
+
+  - type: input
+    id: version
+    attributes:
+      label: FineParser version / image tag
+      placeholder: abbyy/fineparser:1.0.0
+    validations:
+      required: true
+
+  - type: dropdown
+    id: run_mode
+    attributes:
+      label: How are you running it?
+      options:
+        - Server mode (long-running container, POST /parse)
+        - CLI mode (one-shot, positional arguments)
+    validations:
+      required: true
+
+  - type: textarea
+    id: command
+    attributes:
+      label: The exact command you ran
+      description: Your full `docker run` command, plus the request that failed. **Redact your API key.**
+      render: shell
+      placeholder: |
+        docker run -p 8080:8080 -e FINEPARSER_API_KEY="REDACTED" abbyy/fineparser -mode accurate -language "English"
+
+        curl -X POST http://localhost:8080/parse \
+          -F "file=@invoice.pdf" \
+          -F "outputType=doclang" \
+          -o result.doclang
+    validations:
+      required: true
+
+  - type: input
+    id: mode_language
+    attributes:
+      label: Recognition settings
+      description: The `-mode` and `-language` values the container was started with.
+      placeholder: -mode accurate -language "English,German"
+    validations:
+      required: true
+
+  - type: dropdown
+    id: output_type
+    attributes:
+      label: Output format requested
+      description: For CLI mode, the extension of your output file.
+      options:
+        - doclang
+        - json
+        - txt
+    validations:
+      required: true
+
+  - type: textarea
+    id: result
+    attributes:
+      label: Error message, status code, or unexpected output
+      description: The exact response body or error text. A short excerpt of wrong output is fine — do not paste a whole document.
+      render: text
+    validations:
+      required: true
+
+  - type: textarea
+    id: logs
+    attributes:
+      label: Container logs
+      description: Output of `docker logs <container-id>`, redacted.
+      render: shell
+    validations:
+      required: false
+
+  - type: input
+    id: environment
+    attributes:
+      label: Host OS and Docker version
+      description: Output of `docker version` is ideal.
+      placeholder: macOS 15.2 (arm64), Docker 27.4.0
+    validations:
+      required: true
+
+  - type: textarea
+    id: document
+    attributes:
+      label: Sample document
+      description: If you can share a document that reproduces the problem, attach it here. Only attach documents that contain no confidential or personal data.
+    validations:
+      required: false
+
+  - type: checkboxes
+    id: checks
+    attributes:
+      label: Before submitting
+      options:
+        - label: I have searched existing issues for this problem.
+          required: true
+        - label: I have removed my API key, license GUID, and any confidential content from everything above.
+          required: true
+        - label: The container can reach ABBYY's license server (`185.146.155.0/24`, `2620:122:f003::/48`).
+          required: false
