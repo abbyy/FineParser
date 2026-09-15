@@ -1,10 +1,18 @@
-# ABBYY FineParser
+<div align="center">
 
-**High-fidelity document parser for AI pipelines.**
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="./assets/fineparser-logo-dark.svg">
+  <source media="(prefers-color-scheme: light)" srcset="./assets/fineparser-logo.svg">
+  <img alt="ABBYY FineParser" src="./assets/fineparser-logo.svg" width="420">
+</picture>
+
+### High-fidelity document parser for AI pipelines
 
 [![Docker image](https://img.shields.io/badge/docker-abbyy%2Ffineparser-2496ED?logo=docker&logoColor=white)](https://hub.docker.com/r/abbyy/fineparser)
 [![Documentation](https://img.shields.io/badge/docs-docs.abbyy.com-FF2038)](https://docs.abbyy.com/fine-parser/getting-started/introduction)
 [![License](https://img.shields.io/badge/license-Apache--2.0-blue)](./LICENSE)
+
+</div>
 
 FineParser is a self-hosted document parser for AI pipelines. It runs as one Docker container on CPU hardware and exposes one REST endpoint: send a document, get back its structure and text as DocLang, JSON, or plain text. No cloud account, no GPU, and no document data leaves your infrastructure.
 
