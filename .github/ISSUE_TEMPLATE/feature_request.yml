@@ -1,0 +1,66 @@
+name: 💡 Feature request
+description: Suggest a capability or improvement for FineParser
+labels: ["enhancement"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Tell us the problem before the solution — knowing what you are trying to achieve often leads somewhere better than the specific change you had in mind.
+
+        Worth checking first: some things are deliberate limits rather than gaps. Recognition mode and languages are fixed per container by design, and air-gapped operation is a [FineParser Enterprise](https://docs.abbyy.com/fine-parser/reference/enterprise) capability.
+
+  - type: textarea
+    id: problem
+    attributes:
+      label: What problem are you trying to solve?
+      description: Describe the situation, not the feature. What are you building, and where does FineParser get in the way?
+      placeholder: We process invoices in a dozen languages and cannot know which before parsing, so we have to...
+    validations:
+      required: true
+
+  - type: textarea
+    id: workaround
+    attributes:
+      label: What are you doing today instead?
+      description: Your current workaround, and what it costs you in time, money, or accuracy. This helps us judge impact.
+    validations:
+      required: true
+
+  - type: textarea
+    id: proposal
+    attributes:
+      label: What would good look like?
+      description: If you have a specific proposal, describe it here. If you only know the outcome you need, that is fine too.
+    validations:
+      required: false
+
+  - type: dropdown
+    id: plan
+    attributes:
+      label: Which plan are you on?
+      options:
+        - Free
+        - Starter
+        - Growth
+        - Business
+        - Enterprise
+        - Evaluating, not yet signed up
+    validations:
+      required: true
+
+  - type: input
+    id: volume
+    attributes:
+      label: Roughly what volume are you processing?
+      description: Pages per month, if you know it. Helps us understand the scale this needs to work at.
+      placeholder: ~40,000 pages/month
+    validations:
+      required: false
+
+  - type: checkboxes
+    id: checks
+    attributes:
+      label: Before submitting
+      options:
+        - label: I have searched existing issues for this request.
+          required: true

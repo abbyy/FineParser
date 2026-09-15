@@ -1,0 +1,63 @@
+name: ❓ Question
+description: Ask how to do something with FineParser
+labels: ["question"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Happy to help. Two things make this much faster:
+
+        **Check the docs first.** [docs.abbyy.com/fine-parser](https://docs.abbyy.com/fine-parser/getting-started/introduction) covers the [REST API](https://docs.abbyy.com/fine-parser/concepts/rest-api), [CLI](https://docs.abbyy.com/fine-parser/concepts/cli), [configuration](https://docs.abbyy.com/fine-parser/basics/configuration), [output formats](https://docs.abbyy.com/fine-parser/basics/output-formats), and [languages](https://docs.abbyy.com/fine-parser/basics/languages).
+
+        **Or ask your coding agent.** Connect the ABBYY documentation MCP server and it can answer FineParser questions directly while it writes your integration:
+
+        ```bash
+        claude mcp add abbyy-docs https://docs.abbyy.com/mcp --transport http   # Claude Code
+        codex mcp add abbyy-docs --url https://docs.abbyy.com/mcp               # Codex
+        ```
+
+        ⚠️ **Never include your API key or confidential documents** in a public issue.
+
+  - type: textarea
+    id: question
+    attributes:
+      label: What would you like to know?
+    validations:
+      required: true
+
+  - type: textarea
+    id: goal
+    attributes:
+      label: What are you trying to build?
+      description: A sentence of context usually gets you a better answer than the question alone.
+      placeholder: I am indexing scanned contracts into a RAG pipeline and need the tables preserved.
+    validations:
+      required: false
+
+  - type: input
+    id: docs_checked
+    attributes:
+      label: Which documentation pages have you already looked at?
+      description: Paste the URLs. If a page should have answered this but didn't, that is useful for us to know.
+      placeholder: https://docs.abbyy.com/fine-parser/concepts/rest-api
+    validations:
+      required: true
+
+  - type: textarea
+    id: tried
+    attributes:
+      label: What have you tried?
+      description: Commands or code, with your API key redacted.
+      render: shell
+    validations:
+      required: false
+
+  - type: checkboxes
+    id: checks
+    attributes:
+      label: Before submitting
+      options:
+        - label: I have searched existing issues.
+          required: true
+        - label: This is not a billing or account question (those go through the [billing portal](https://docs.abbyy.com/fine-parser/basics/api-keys-and-plans)).
+          required: true
