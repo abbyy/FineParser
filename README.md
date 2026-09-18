@@ -260,8 +260,7 @@ Full documentation lives at **[docs.abbyy.com/fine-parser](https://docs.abbyy.co
 
 | Plan | Support |
 |---|---|
-| Free, Starter, Growth | Community — [this repository](https://github.com/abbyy/FineParser/issues) |
-| Business | Community and [ABBYY technical support](https://support.abbyy.com/hc/en-us) |
+| Free, Starter, Growth, Business | Community — [this repository](https://github.com/abbyy/FineParser/issues) |
 | Enterprise | Enterprise SLAs and ABBYY technical support |
 
 See [SUPPORT.md](./SUPPORT.md) for what to include in a report, and [CONTRIBUTING.md](./CONTRIBUTING.md) for how to help.

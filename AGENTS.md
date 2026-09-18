@@ -284,4 +284,4 @@ The license key is the only value in the telemetry tied to the user's account. D
 
 ## 14. When something is genuinely unclear
 
-Don't guess and don't fabricate an API. Query the MCP server (§2), or tell the user to open an issue at [github.com/abbyy/FineParser/issues](https://github.com/abbyy/FineParser/issues) — that is the community support channel for Free, Starter, and Growth plans.
+Don't guess and don't fabricate an API. Query the MCP server (§2), or tell the user to open an issue at [github.com/abbyy/FineParser/issues](https://github.com/abbyy/FineParser/issues) — that is the community support channel for every self-service plan, including Business.

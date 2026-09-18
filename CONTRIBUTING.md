@@ -42,4 +42,4 @@ The files here â€” `README.md`, `AGENTS.md`, `SUPPORT.md`, the issue templates â
 
 ## Response expectations
 
-Community support is best-effort. ABBYY monitors this repository, but Free, Starter, and Growth plans carry no contractual response time. Business plans add [ABBYY technical support](https://support.abbyy.com/hc/en-us); Enterprise adds SLAs. See [SUPPORT.md](./SUPPORT.md).
+Community support is best-effort. ABBYY monitors this repository, but Free, Starter, Growth, and Business plans all carry no contractual response time. Enterprise adds SLAs and ABBYY technical support. See [SUPPORT.md](./SUPPORT.md).

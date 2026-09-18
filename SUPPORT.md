@@ -17,19 +17,14 @@ Most questions are answered at **[docs.abbyy.com/fine-parser](https://docs.abbyy
 
 | Plan | Support |
 |---|---|
-| Free, Starter, Growth | Community — [this repository](https://github.com/abbyy/FineParser/issues) |
-| Business | Community and [ABBYY technical support](https://support.abbyy.com/hc/en-us) |
+| Free, Starter, Growth, Business | Community — [this repository](https://github.com/abbyy/FineParser/issues) |
 | Enterprise | Enterprise SLAs, named contacts, and ABBYY technical support |
 
 ### Community support
 
-[Issues in this repository](https://github.com/abbyy/FineParser/issues) are where to ask questions, report bugs, request features, and see what other people have run into. It is monitored by ABBYY, but response times are best-effort rather than contractual.
+[Issues in this repository](https://github.com/abbyy/FineParser/issues) are where to ask questions, report bugs, request features, and see what other people have run into. It is monitored by ABBYY, but response times are best-effort rather than contractual. This is the support channel for every self-service plan, including Business.
 
 **Search existing issues before opening a new one.** Several of the most common problems — every parse failing, output missing its structure, processing stopping mid-month — already have answers.
-
-### ABBYY technical support
-
-Business plan customers can open a ticket with [ABBYY technical support](https://support.abbyy.com/hc/en-us) in addition to using the community channel.
 
 ### Enterprise SLAs
 
