@@ -36,7 +36,7 @@ The files here — `README.md`, `AGENTS.md`, `SUPPORT.md`, the issue templates �
 
 ## Ground rules
 
-- **Never post API keys, license GUIDs, or confidential documents** in an issue or pull request. Redact before you submit.
+- **Never post license file contents, license key GUIDs, or confidential documents** in an issue or pull request. Redact before you submit.
 - Be civil. This repository follows the [Code of Conduct](./CODE_OF_CONDUCT.md).
 - Keep billing and account questions out of public issues — those go through the channels in [SUPPORT.md](./SUPPORT.md).
 
