@@ -7,16 +7,16 @@ body:
       value: |
         Thanks for taking the time to file a report.
 
-        **Before you start:** please [search existing issues](https://github.com/abbyy/FineParser/issues?q=is%3Aissue) — several common problems already have answers, particularly every parse failing (license server egress) and missing structure in the output (`-mode fast`).
+        **Before you start:** please [search existing issues](https://github.com/abbyy/FineParser/issues?q=is%3Aissue) — several common problems already have answers, particularly every submission failing (license server egress, see `503`/`403`), missing structure in the output (`-mode fast`), and `409`/`410` on download (the job hasn't finished, or its result already expired via `DELETE_ON_DOWNLOAD`).
 
-        ⚠️ **Never include your API key, license GUID, or confidential documents.** Redact them from commands, logs, and screenshots before posting.
+        ⚠️ **Never include your license file contents, license key GUID, or confidential documents.** Redact them from commands, logs, and screenshots before posting.
 
   - type: textarea
     id: summary
     attributes:
       label: What happened?
       description: What did you expect, and what happened instead?
-      placeholder: I posted a PDF to /parse expecting DocLang with tables, but the response contained only plain text.
+      placeholder: I submitted a PDF to /parse expecting DocLang with tables, but the downloaded result contained only plain text.
     validations:
       required: true
 
@@ -24,7 +24,7 @@ body:
     id: version
     attributes:
       label: FineParser version / image tag
-      placeholder: abbyy/fineparser:1.0.0
+      placeholder: abbyyteam/fineparser:1.0.0
     validations:
       required: true
 
@@ -33,7 +33,7 @@ body:
     attributes:
       label: How are you running it?
       options:
-        - Server mode (long-running container, POST /parse)
+        - Server mode (long-running container, POST /parse + polling)
         - CLI mode (one-shot, positional arguments)
     validations:
       required: true
@@ -42,15 +42,19 @@ body:
     id: command
     attributes:
       label: The exact command you ran
-      description: Your full `docker run` command, plus the request that failed. **Redact your API key.**
+      description: Your full `docker run` command, plus the requests that failed. **Redact your license file contents.**
       render: shell
       placeholder: |
-        docker run -p 8080:8080 -e FINEPARSER_API_KEY="REDACTED" abbyy/fineparser -mode accurate -language "English"
+        docker run -d --name fineparser -p 8080:8080 \
+          -e FINEPARSER_LICENSE_DATA="REDACTED" \
+          -v fineparser-output:/app/output \
+          abbyyteam/fineparser -mode accurate -language "English"
 
-        curl -X POST http://localhost:8080/parse \
+        curl -s -X POST http://localhost:8080/parse \
           -F "file=@invoice.pdf" \
-          -F "outputType=doclang" \
-          -o result.doclang
+          -F "outputType=doclang"
+
+        curl -s http://localhost:8080/jobs/6c4f1f0e-...
     validations:
       required: true
 
@@ -76,6 +80,18 @@ body:
       required: true
 
   - type: textarea
+    id: job_state
+    attributes:
+      label: Job ID, status, and /healthz response
+      description: If this involves a submitted job, the `jobId`, the last `status` you saw from `GET /jobs/{id}`, and the output of `curl -s localhost:8080/healthz`.
+      render: json
+      placeholder: |
+        {"jobId":"6c4f1f0e-...","status":"failed","error":"..."}
+        {"code":"ok","ready":true,"telemetry":true}
+    validations:
+      required: false
+
+  - type: textarea
     id: result
     attributes:
       label: Error message, status code, or unexpected output
@@ -88,7 +104,7 @@ body:
     id: logs
     attributes:
       label: Container logs
-      description: Output of `docker logs <container-id>`, redacted.
+      description: Output of `docker logs <container-name>`, redacted.
       render: shell
     validations:
       required: false
@@ -96,9 +112,9 @@ body:
   - type: input
     id: environment
     attributes:
-      label: Host OS and Docker version
-      description: Output of `docker version` is ideal.
-      placeholder: macOS 15.2 (arm64), Docker 27.4.0
+      label: Host OS, architecture, and Docker version
+      description: Output of `docker version`, and whether you're on ARM using `--platform linux/amd64`.
+      placeholder: macOS 15.2 (arm64, --platform linux/amd64), Docker 27.4.0
     validations:
       required: true
 
@@ -117,7 +133,9 @@ body:
       options:
         - label: I have searched existing issues for this problem.
           required: true
-        - label: I have removed my API key, license GUID, and any confidential content from everything above.
+        - label: I have removed my license file contents, license key GUID, and any confidential content from everything above.
           required: true
         - label: The container can reach ABBYY's license server (`185.146.155.0/24`, `2620:122:f003::/48`).
+          required: false
+        - label: "I checked `GET /healthz` and it reports `ready: true`."
           required: false

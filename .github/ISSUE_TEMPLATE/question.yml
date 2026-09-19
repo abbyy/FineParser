@@ -16,7 +16,7 @@ body:
         codex mcp add abbyy-docs --url https://docs.abbyy.com/mcp               # Codex
         ```
 
-        ⚠️ **Never include your API key or confidential documents** in a public issue.
+        ⚠️ **Never include your license file contents or confidential documents** in a public issue.
 
   - type: textarea
     id: question
@@ -47,7 +47,7 @@ body:
     id: tried
     attributes:
       label: What have you tried?
-      description: Commands or code, with your API key redacted.
+      description: Commands or code, with your license file contents redacted.
       render: shell
     validations:
       required: false
@@ -59,5 +59,5 @@ body:
       options:
         - label: I have searched existing issues.
           required: true
-        - label: This is not a billing or account question (those go through the [billing portal](https://docs.abbyy.com/fine-parser/basics/api-keys-and-plans)).
+        - label: This is not a billing or account question (those go through the [billing portal](https://docs.abbyy.com/fine-parser/basics/licenses-and-plans)).
           required: true
